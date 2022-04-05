@@ -1,9 +1,7 @@
-## Ignite Lab
+### :rocket: Ignite Lab
 Microserviço de compras
 
-### Tecnologias
----
-<br>
+#### 	:computer: Tecnologias
 
 - NestJS
 - GraphQL
@@ -11,9 +9,7 @@ Microserviço de compras
 - Next.js
 - Apollo Client (GraphQL)
 
-### Funcionalidades
----
-<br>
+#### 	:toolbox: Funcionalidades
 
 > Serviço de compras (purchases)
 ```md
