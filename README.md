@@ -3,33 +3,35 @@ Microserviço de compras
 
 #### 	:computer: Tecnologias
 
+```
 - NestJS
 - GraphQL
 - Apache Kafka
 - Next.js
 - Apollo Client (GraphQL)
+```
 
 #### 	:toolbox: Funcionalidades
 
 > Serviço de compras (purchases)
 ```md
-  [ ][Admin] Cadastro de produtos
-  [ ][Admin] Listagem de produtos
+  [ ][permission: "admin"] = "Cadastro de produtos"
+  [ ][permission: "admin"] = "Listagem de produtos"
 
-  [ ][Auth] Listagem de compras
+  [ ][permission: "auth"] = "Listagem de compras"
 
-  [ ][Public] Compra de um produto
-  [ ][Public] Lista produtos disponíveis p/ compra
+  [ ][permission: "public"] = "Compra de um produto"
+  [ ][permission: "public"] = "Lista produtos disponíveis p/ compra"
 ```
 
 > Serviço de sala de aula (classroom)
 
-```md
-  [ ][Admin] Listar matrículas
-  [ ][Admin] Listar alunos
-  [ ][Admin] Listar cursos
-  [ ][Admin] Cadastrar cursos
+```js
+  [ ][permission: "admin"] = "Listar matrículas"
+  [ ][permission: "admin"] = "Listar alunos"
+  [ ][permission: "admin"] = "Listar cursos"
+  [ ][permission: "admin"] = "Cadastrar cursos"
 
-  [ ][Auth] Listar cursos que tenho acesso
-  [ ][Auth] Acessar conteúdo do curso
+  [ ][permission: "auth"] = "Listar cursos que tenho acesso"
+  [ ][permission: "auth"] = "Acessar conteúdo do curso"
 ```
