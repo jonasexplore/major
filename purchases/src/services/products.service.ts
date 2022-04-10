@@ -1,30 +1,44 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/database/prisma/prisma.service';
-import { CreateProduct } from 'src/types/create-product';
+
+import slugify from 'slugify';
+
+import { PrismaService } from '../database/prisma/prisma.service';
+import { CreateProduct } from '../types';
 
 @Injectable()
 export class ProductsService {
   constructor(private prisma: PrismaService) {}
 
-  async getById(id: string) {
-    return this.prisma.product.findOne({
+  getById(id: string) {
+    return this.prisma.product.findUnique({
       where: {
         id,
       },
     });
   }
 
-  async listAll() {
+  listAll() {
     return this.prisma.product.findMany();
   }
 
-  async create({ slug, title }: CreateProduct) {
-    const existsProductWithSameSlug = this.prisma.product.findUnique(slug);
+  async create({ title }: CreateProduct) {
+    const slug = slugify(title, { lower: true });
+
+    const existsProductWithSameSlug = await this.prisma.product.findUnique({
+      where: {
+        slug,
+      },
+    });
 
     if (existsProductWithSameSlug) {
       throw new Error('This slug already exists');
     }
 
-    return this.prisma.product.create({ title, slug });
+    return this.prisma.product.create({
+      data: {
+        title,
+        slug,
+      },
+    });
   }
 }
