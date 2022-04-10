@@ -13,10 +13,12 @@ datasource db {
 model Student {
   id String @id @default(uuid())
 
+  authUserId String? @unique
+
   enrollments Enrollment[]
 
-  createAt DateTime @default(now())
-  updateAt DateTime @default(now()) @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Course {
@@ -27,14 +29,8 @@ model Course {
 
   enrolledOn Enrollment[]
 
-  createAt DateTime @default(now())
-  updateAt DateTime @default(now()) @updatedAt
-}
-
-enum PurchaseStatus {
-  PENDING
-  PAID
-  CANCELED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Enrollment {
@@ -47,6 +43,6 @@ model Enrollment {
   course   Course @relation(fields: [courseId], references: [id])
 
   canceledAt DateTime?
-  createAt   DateTime  @default(now())
-  updateAt   DateTime  @default(now()) @updatedAt
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
 }
