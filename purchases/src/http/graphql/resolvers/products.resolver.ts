@@ -1,6 +1,6 @@
-import { Query } from '@nestjs/common';
-import { Mutation, Resolver } from '@nestjs/graphql';
-import { ProductsService } from 'src/services/products.service';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+
+import { ProductsService } from '../../../services/products.service';
 import { CreateProductInput } from '../inputs/create-product-input';
 import { Product } from '../models/product';
 
@@ -14,7 +14,7 @@ export class ProductsResolver {
   }
 
   @Mutation(() => Product)
-  async createProduct(@Arg('data') data: CreateProductInput) {
+  async createProduct(@Args('data') data: CreateProductInput) {
     return this.productsService.create(data);
   }
 }
