@@ -27,6 +27,8 @@ model Course {
   title String
   slug  String @unique
 
+  purchasesProductId String?
+
   enrolledOn Enrollment[]
 
   createdAt DateTime @default(now())
