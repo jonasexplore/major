@@ -42,7 +42,7 @@ export class CoursesResolver {
   }
 
   @Mutation(() => Course)
-  createCourse(@Args('data') data: CreateCourse) {
-    return this.coursesService.createCourse(data);
+  createCourse(@Args('data') title: string) {
+    return this.coursesService.createCourse({ title });
   }
 }
