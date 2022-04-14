@@ -28,9 +28,10 @@ export class CoursesService {
     });
   }
 
-  async createCourse({ title }: CreateCourse) {
-    const slug = slugify(title, { lower: true });
-
+  async createCourse({
+    title,
+    slug = slugify(title, { lower: true }),
+  }: CreateCourse) {
     const courseAlreadyExists = await this.findBySlug(slug);
 
     if (courseAlreadyExists) {
